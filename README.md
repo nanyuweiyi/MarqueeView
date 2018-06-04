@@ -8,7 +8,7 @@
 
 #### Gradle:
 
-    implementation 'com.github.nanyuweiyi:MarqueeView:1.0.0'
+    implementation 'com.github.nanyuweiyi:MarqueeView:1.0.1'
 
 #### 属性
 
