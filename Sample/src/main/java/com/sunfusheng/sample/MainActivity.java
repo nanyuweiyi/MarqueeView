@@ -35,22 +35,23 @@ public class MainActivity extends AppCompatActivity {
         marqueeView4 = findViewById(R.id.marqueeView4);
 
         List<CharSequence> list = new ArrayList<>();
-        SpannableString ss1 = new SpannableString("1、MarqueeView开源项目");
+        SpannableString ss1 = new SpannableString("http://www.baidu.com/");
         ss1.setSpan(new ForegroundColorSpan(Color.RED), 2, 13, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         list.add(ss1);
-        SpannableString ss2 = new SpannableString("2、GitHub：sfsheng0322");
-        ss2.setSpan(new ForegroundColorSpan(Color.GREEN), 9, 20, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        SpannableString ss2 = new SpannableString("http://www.baidu.com/");
+        ss2.setSpan(new ForegroundColorSpan(Color.GREEN), 3, 5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         list.add(ss2);
-        SpannableString ss3 = new SpannableString("3、个人博客：sunfusheng.com");
-        ss3.setSpan(new URLSpan("http://sunfusheng.com/"), 7, 21, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        SpannableString ss3 = new SpannableString("3、测试数据333");
+        ss3.setSpan(new URLSpan("http://www.baidu.com/"), 2, 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         list.add(ss3);
-        list.add("4、新浪微博：@孙福生微博");
+        list.add("http://www.baidu.com/");
 
         marqueeView.startWithList(list);
         marqueeView.setOnItemClickListener(new MarqueeView.OnItemClickListener() {
             @Override
             public void onItemClick(int position, TextView textView) {
                 Toast.makeText(MainActivity.this, textView.getText() + "", Toast.LENGTH_SHORT).show();
+                WebViewActivity.startWebViewActivity(MainActivity.this, textView.getText().toString());
             }
         });
 

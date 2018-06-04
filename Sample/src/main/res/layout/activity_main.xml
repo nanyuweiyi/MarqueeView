@@ -54,6 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/xml_oval_half_transparent_bg"
         android:paddingLeft="10dp"
@@ -68,12 +69,14 @@
 
         <com.sunfusheng.marqueeview.MarqueeView
             android:id="@+id/marqueeView2"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:layout_toRightOf="@+id/iv_speaker2"
             app:mvTextColor="@color/white"
+            app:mvDirection="bottom_to_top"
             app:mvTextSize="14sp"/>
     </RelativeLayout>
 

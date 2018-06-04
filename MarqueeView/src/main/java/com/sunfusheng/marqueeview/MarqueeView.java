@@ -18,7 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by sunfusheng on 16/5/31.
+ * 滚动的View
+ * Created by tnn on 18/6/1.
  */
 public class MarqueeView extends ViewFlipper {
 
@@ -49,6 +50,10 @@ public class MarqueeView extends ViewFlipper {
     private int position;
     private List<? extends CharSequence> notices = new ArrayList<>();
     private OnItemClickListener onItemClickListener;
+
+    public MarqueeView(Context context) {
+        this(context, null);
+    }
 
     public MarqueeView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -205,6 +210,8 @@ public class MarqueeView extends ViewFlipper {
         });
     }
 
+    private boolean isAnimStart = false;
+
     private void start(final @AnimRes int inAnimResId, final @AnimRes int outAnimResID) {
         removeAllViews();
         clearAnimation();
@@ -212,7 +219,7 @@ public class MarqueeView extends ViewFlipper {
         position = 0;
         addView(createTextView(notices.get(position)));
 
-        if (notices.size() > 1) {
+        if (notices.size() >= 1) {   //控制1条数据是否需要滚动
             setInAndOutAnimation(inAnimResId, outAnimResID);
             startFlipping();
         }
@@ -221,6 +228,10 @@ public class MarqueeView extends ViewFlipper {
             getInAnimation().setAnimationListener(new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
+                    if (isAnimStart) {
+                        animation.cancel();
+                    }
+                    isAnimStart = true;
                 }
 
                 @Override
@@ -233,6 +244,7 @@ public class MarqueeView extends ViewFlipper {
                     if (view.getParent() == null) {
                         addView(view);
                     }
+                    isAnimStart = false;
                 }
 
                 @Override
